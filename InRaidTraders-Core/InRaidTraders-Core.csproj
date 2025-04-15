@@ -121,9 +121,6 @@
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\bsg.console.core.dll</HintPath>
     </Reference>
     <Reference Include="DissonanceVoip" HintPath="..\..\..\EscapeFromTarkov_Data\Managed\DissonanceVoip.dll" Private="false" />
-    <Reference Include="Fika.Core">
-      <HintPath>..\..\..\BepInEx\plugins\Fika.Core.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.AIModule.dll</HintPath>
     </Reference>
