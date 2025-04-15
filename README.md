@@ -1,38 +1,30 @@
-# SPT-CQB
+# In-Raid Traders
 
-![GitHub license](https://img.shields.io/github/license/srwxr-xr-x/spt-cqb.svg)
-![GitHub issues](https://img.shields.io/github/issues/srwxr-xr-x/spt-cqb.svg)
-![GitHub release](https://img.shields.io/github/v/release/srwxr-xr-x/spt-cqb?include_prereleases)
+![GitHub license](https://img.shields.io/github/license/srwxr-xr-x/InRaidTraders/.svg)
+![GitHub issues](https://img.shields.io/github/issues/srwxr-xr-x/InRaidTraders/.svg)
+![GitHub release](https://img.shields.io/github/v/release/srwxr-xr-x/InRaidTraders/?include_prereleases)
 
-A WIP, CQB mod for Single Player Tarkov and FIKA
+A WIP, In-Raid Traders mod for Single Player Tarkov
 
 ---
-
-## Features:
-- **Tapping limbs to inform the player that you are ready.**
-- **Follow Close behind player, interact with a player's shoulder to follow on that side with your weapon, to help clear.**
-    
-## Planned Features
-- **Better tapping system, bounce camera slightly to signify rather than a notification (WIP)**
     
 ## Installation
     
-You will need **SPT version 3.11.x** installed, and the latest FIKA mod installed as well. Unzip and drag the mod into the root of your SPT install, where the EXE is located.
-The mod should not be under the path *SPTLocation/BepInEx/plugins/CQB.dll*.
+You will need **SPT version 3.11.x** installed. Unzip and drag the mod into the root of your SPT install, where the EXE is located.
+The mod should be under the path *SPTLocation/BepInEx/plugins/In-RaidTraders.dll*.
     
 ### Reporting Issues and Bugs
     
-You can report bugs and crashes by opening an issue on our [issue tracker](https://github.com/swrxr-xr-x/spt-cqb/issues).
+You can report bugs and crashes by opening an issue on our [issue tracker](https://github.com/srwxr-xr-x/InRaidTraders/issues).
     
 ### Building with Rider
 
-CQB uses a typical C# project structure and can be built by simply running the default `Debug` task. After Rider
-finishes building the project, you can find the built mod in `bin/Debug`. Feel free to open a pull request!
+In-RaidTraders uses a typical C# project structure and can be built by simply running the default `Debug` or `Release` task. After Rider
+finishes building the project, you can find the built mod in `bin/Debug` or `bin/Release`. Feel free to open a pull request!
 
 ### Development
 
-If you are going to help develop the mod (which I highly recommend!) I only ask that you add your feature to the bullet point list
-on this `readme`!
+If you are going to help develop the mod (which I highly recommend!) I only ask that you pull request your feature!
 
 ### License 
 
