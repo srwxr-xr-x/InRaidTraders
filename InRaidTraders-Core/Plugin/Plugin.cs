@@ -1,8 +1,10 @@
-﻿using BepInEx;
+﻿using System.Collections.Generic;
+using BepInEx;
 using BepInEx.Logging;
 using EFT;
 using EFT.UI;
 using EFT.UI.Screens;
+using InRaidTraders.Patches;
 using UnityEngine;
 using static InRaidTraders.AssemblyInfoClass;
 
@@ -18,13 +20,13 @@ public class Plugin : BaseUnityPlugin
         LogSource.LogInfo("InRaidTraders loaded!");
         
         new TraderDialogScreenPatch().Enable();
+        new AvailableActionsPatch().Enable();
+        new GameWorldStartPatch().Enable();
     }
         
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, Globals.PRAPOR_ID, GamePlayerOwner.MyPlayer.AbstractQuestControllerClass, GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
-        }
+
+        
     }
 }

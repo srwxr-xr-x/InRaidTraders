@@ -128,10 +128,14 @@
     </Reference>
   </ItemGroup>
     <ItemGroup>
+        <Compile Include="Components\TraderInteractable.cs" />
+        <Compile Include="Patches\AvailableActionsPatch.cs" />
+        <Compile Include="Patches\GameWorldStartPatch.cs" />
+        <Compile Include="Patches\TraderDialogScreenPatch.cs" />
         <Compile Include="Plugin\AssemblyInfoClass.cs" />
         <Compile Include="Plugin\Globals.cs" />
         <Compile Include="Plugin\Plugin.cs" />
-        <Compile Include="TraderDialogScreenPatch.cs" />
+        <Compile Include="GeneralDialogHandler.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
