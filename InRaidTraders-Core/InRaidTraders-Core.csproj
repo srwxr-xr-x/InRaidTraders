@@ -34,7 +34,6 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
   <ItemGroup>
-    <!-- These are used by .github/workflows/dotnet-build.yml and when building from non-Windows OS -->
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net471" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>

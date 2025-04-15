@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using EFT;
 using EFT.InventoryLogic;
@@ -32,17 +31,16 @@ public class TraderDialogScreenPatch : ModulePatch
         // GClass2338 = Lightkeeper Dialog Handler
         
         if (___string_0 == Globals.PRAPOR_ID)
-        {
-            ___gclass2336_0 = new GClass2338(___profile_0, ___string_0, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
+        {            
+            ___gclass2336_0 = new GClass2338(___profile_0, Profile.TraderInfo.LIGHT_KEEPER_TRADER_ID, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
+            
             ___gclass2336_0.OnActionFinished += __instance.method_5;
             ___UI.AddDisposable(__instance.method_7);
             ___UI.AddDisposable(___gclass2336_0);
             ____dialogWindow.Show(___gclass2336_0);
+
             return false;
         }
         return true;
-        
-
-
     }
 }
