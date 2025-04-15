@@ -1,7 +1,7 @@
 # In-Raid Traders
 
-![GitHub license](https://img.shields.io/github/license/srwxr-xr-x/InRaidTraders/.svg)
-![GitHub issues](https://img.shields.io/github/issues/srwxr-xr-x/InRaidTraders/.svg)
+![GitHub license](https://img.shields.io/github/license/srwxr-xr-x/InRaidTraders.svg)
+![GitHub issues](https://img.shields.io/github/issues/srwxr-xr-x/InRaidTraders.svg)
 ![GitHub release](https://img.shields.io/github/v/release/srwxr-xr-x/InRaidTraders/?include_prereleases)
 
 A WIP, In-Raid Traders mod for Single Player Tarkov
