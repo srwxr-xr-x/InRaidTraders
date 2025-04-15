@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InRaidTraders-Core", "InRaidTraders-Core\InRaidTraders-Core.csproj", "{780DF1D8-D474-489B-9AAA-BD1AD81D91EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{780DF1D8-D474-489B-9AAA-BD1AD81D91EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780DF1D8-D474-489B-9AAA-BD1AD81D91EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780DF1D8-D474-489B-9AAA-BD1AD81D91EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780DF1D8-D474-489B-9AAA-BD1AD81D91EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
