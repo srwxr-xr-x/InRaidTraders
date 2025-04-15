@@ -31,19 +31,18 @@ public class TraderDialogScreenPatch : ModulePatch
         // GClass2337 = BTR Dialog Handler
         // GClass2338 = Lightkeeper Dialog Handler
         
-        string traderID = ___string_0;
-        if (traderID == "638f541a29ffd1183d187f57")
-            ___gclass2336_0 = new GClass2338(___profile_0, ___string_0, ___abstractQuestControllerClass,
-                ___inventoryController_0, ___ginterface238_0);
-        if (traderID == "656f0f98d80a697f855d34b1")
-            ___gclass2336_0 = new GClass2337(___profile_0, ___string_0, ___abstractQuestControllerClass,
-                ___inventoryController_0, ___ginterface238_0);
-        // Add new trader here
+        if (___string_0 == Globals.PRAPOR_ID)
+        {
+            ___gclass2336_0 = new GClass2338(___profile_0, ___string_0, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
+            ___gclass2336_0.OnActionFinished += __instance.method_5;
+            ___UI.AddDisposable(__instance.method_7);
+            ___UI.AddDisposable(___gclass2336_0);
+            ____dialogWindow.Show(___gclass2336_0);
+            return false;
+        }
+        return true;
+        
 
-        ___gclass2336_0.OnActionFinished += __instance.method_5;
-        ___UI.AddDisposable(__instance.method_7);
-        ___UI.AddDisposable(___gclass2336_0);
-        ____dialogWindow.Show(___gclass2336_0);
-        return false;
+
     }
 }

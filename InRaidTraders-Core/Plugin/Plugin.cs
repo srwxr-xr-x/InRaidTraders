@@ -24,7 +24,7 @@ public class Plugin : BaseUnityPlugin
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, "656f0f98d80a697f855d34b1", GamePlayerOwner.MyPlayer.AbstractQuestControllerClass, GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
+            new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, Globals.PRAPOR_ID, GamePlayerOwner.MyPlayer.AbstractQuestControllerClass, GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
         }
     }
 }

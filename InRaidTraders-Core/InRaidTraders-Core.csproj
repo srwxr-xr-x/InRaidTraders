@@ -133,6 +133,7 @@
   </ItemGroup>
     <ItemGroup>
         <Compile Include="Plugin\AssemblyInfoClass.cs" />
+        <Compile Include="Plugin\Globals.cs" />
         <Compile Include="Plugin\Plugin.cs" />
         <Compile Include="TraderDialogScreenPatch.cs" />
     </ItemGroup>
