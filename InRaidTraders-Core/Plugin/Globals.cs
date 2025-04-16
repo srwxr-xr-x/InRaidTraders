@@ -1,4 +1,5 @@
 using EFT;
+using UnityEngine;
 
 namespace InRaidTraders;
 
@@ -17,4 +18,16 @@ public class Globals
     public const string BTR_DRIVER_ID = Profile.TraderInfo.BTR_TRADER_ID;
 
     public const string INTERACTIVE_UUID = "SPT-IRT";
+
+    public const string FACTORY_DAY = "factory4_day";
+    public const string FACTORY_NIGHT = "factory4_night";
+    public const string WOODS = "Woods";
+    public const string CUSTOMS = "bigmap";
+    public const string INTERCHANGE = "Interchange";
+    public const string RESERVE = "RezervBase";
+    public const string SNORELINE = "Shoreline";
+    public const string LABS = "laboratory";
+    public const string LIGHTHOUSE = "Lighthouse";
+    public const string STREETS = "TarkovStreets";
+    public const string GROUND_ZERO = "Sandbox";
 }

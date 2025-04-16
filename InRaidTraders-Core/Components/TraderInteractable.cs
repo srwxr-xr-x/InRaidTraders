@@ -10,7 +10,7 @@ public class TraderInteractable : InteractableObject
     public void OnTalk()
     {
         // Get GUID from transform root
-        new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, this.name.Replace(Globals.INTERACTIVE_UUID + " -- ", ""), GamePlayerOwner.MyPlayer.AbstractQuestControllerClass, GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
+        new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile,name.Replace(Globals.INTERACTIVE_UUID + " -- ", ""), GamePlayerOwner.MyPlayer.AbstractQuestControllerClass, GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
     }
 
     public ActionsReturnClass GetActions()

@@ -128,9 +128,11 @@
     </Reference>
   </ItemGroup>
     <ItemGroup>
+        <Compile Include="Components\TraderBuilder.cs" />
         <Compile Include="Components\TraderInteractable.cs" />
         <Compile Include="Patches\AvailableActionsPatch.cs" />
         <Compile Include="Patches\GameWorldStartPatch.cs" />
+        <Compile Include="Patches\TraderScreensGroupPatch.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
         <Compile Include="Plugin\AssemblyInfoClass.cs" />
         <Compile Include="Plugin\Globals.cs" />
