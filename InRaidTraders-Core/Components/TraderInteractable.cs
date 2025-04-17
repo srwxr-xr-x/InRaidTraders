@@ -16,7 +16,7 @@ public class TraderInteractable : InteractableObject
     public ActionsReturnClass GetActions()
     {
         ActionsReturnClass actionsReturnClass = new ActionsReturnClass();
-        actionsReturnClass.Actions.Add(new ActionsTypesClass()
+        actionsReturnClass.Actions.Add(new ActionsTypesClass
         {
             Action = OnTalk,
             Name = "Talk",

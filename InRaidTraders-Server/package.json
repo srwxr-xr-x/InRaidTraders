@@ -1,0 +1,30 @@
+{
+    "name": "In-Raid Traders-Server",
+    "version": "1.0.0",
+    "main": "src/mod.js",
+    "license": "CC BY-NC-ND 4.0",
+    "author": "lillian",
+    "sptVersion": "~3.11",
+    "isBundleMod": false,
+    "loadBefore": [],
+    "loadAfter": [],
+    "incompatibilities": [],
+    "contributors": [],
+    "scripts": {
+        "setup": "npm i",
+        "build": "node ./packageBuild.ts",
+        "buildinfo": "node ./packageBuild.ts --verbose"
+    },
+    "devDependencies": {
+        "@types/node": "20.11",
+        "@typescript-eslint/eslint-plugin": "7.2",
+        "@typescript-eslint/parser": "7.2",
+        "archiver": "^6.0",
+        "eslint": "8.57",
+        "fs-extra": "11.2",
+        "ignore": "^5.2",
+        "tsyringe": "4.8.0",
+        "typescript": "5.4",
+        "winston": "3.12"
+    }
+}

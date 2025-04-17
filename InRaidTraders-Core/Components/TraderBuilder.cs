@@ -1,4 +1,3 @@
-using EFT.Interactive;
 using UnityEngine;
 
 namespace InRaidTraders.Components;

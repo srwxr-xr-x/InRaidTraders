@@ -21,27 +21,6 @@ public class GeneralDialogHandler(
         method_4(new DialogOptionDataStruct(dialogType, dialogAction, animationController?.InitialDescriptionKey));
     }
 
-    public override void ServiceUpdateHandler()
-    {
-        if (CurrentDialog == null)
-        {
-            return;
-        }
-        ETraderDialogType type = CurrentDialog.Type;
-        if (type - ETraderDialogType.SubServices > 2)
-        {
-            if (type == ETraderDialogType.Main)
-            {
-                CurrentDialog = new GClass2380(Trader, abstractQuestControllerClass, inventoryController_0, this, CurrentDialog.Source);
-            }
-        }
-        else
-        {
-            CurrentDialog = new GClass2366(Trader, profile_0, inventoryController_0, abstractQuestControllerClass, CurrentDialog.Source);
-        }
-    }
-
-    // Token: 0x0600CFC2 RID: 53186 RVA: 0x005407EC File Offset: 0x0053E9EC
     public override GClass2363 CreateDialogList(DialogOptionDataStruct source)
     {
         ETraderDialogType dialogType = source.DialogType;
@@ -62,7 +41,7 @@ public class GeneralDialogHandler(
             case ETraderDialogType.QuestList:
                 return new GClass2382(Trader, abstractQuestControllerClass, inventoryController_0, this, source);
             case ETraderDialogType.Main:
-                return new GClass2380(Trader, abstractQuestControllerClass, inventoryController_0, this, source);
+                return new Dialog(Trader, abstractQuestControllerClass, inventoryController_0, this, source);
             case ETraderDialogType.None:
                 return null;
             default:
