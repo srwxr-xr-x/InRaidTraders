@@ -2,6 +2,7 @@ using System.Linq;
 using System.Reflection;
 using Comfort.Common;
 using EFT;
+using EFT.Interactive;
 using InRaidTraders.Components;
 using SPT.Reflection.Patching;
 using UnityEngine;
@@ -24,6 +25,10 @@ public class GameWorldStartPatch : ModulePatch
         {
             if (seedSpawnChance <= Plugin.praporSpawnChance.Value)
             {
+                GameObject door = GameObject.Find("SBG_Woods_Combined/SOO_LOD0/DOORS/Outside_Door_Wood_09_L_210-100/Outside_Door_Wood_09_L_210-100_door");
+                door.GetComponent<Door>().DoorState -= EDoorState.Locked;
+                door.GetComponent<Door>().DoorState = EDoorState.Shut;   
+                
                 TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 8.702f, 179.3f), 
                     new Vector3(1f, 1f, 1f), true);
             }

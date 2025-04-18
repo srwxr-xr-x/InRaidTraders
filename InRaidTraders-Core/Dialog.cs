@@ -74,13 +74,13 @@ public class Dialog : GClass2379
 			}
 		}
 		// Services Dialog Option
-		if (_traderInfo.Id != "5ac3b934156ae10c4430e83c")
+		if (_traderInfo.Id == "5ac3b934156ae10c4430e83c")
 		{
 			GClass2361 servicesDialogOption = new GClass2361(
 				new DialogOptionDataStruct(ETraderDialogType.Services, GClass3353.EDialogState.AvailableServices,
 					"Trading/" + Utils.TraderIdToName(_traderInfo.Id) +
 					"/Dialog/AvailableServices/Description".Localized()),
-				"Trading//Dialog/" + Utils.TraderIdToName(_traderInfo.Id) + "AvalaibleServices",
+				"Trading/Dialog/" + Utils.TraderIdToName(_traderInfo.Id) + "/AvaliableServices",
 				GStruct268.EDialogLiteIconType.Suitcase);
 			Dictionary<ETraderServiceType, BackendConfigSettingsClass.ServiceData> servicesData =
 				Singleton<BackendConfigSettingsClass>.Instance.ServicesData;
@@ -89,7 +89,7 @@ public class Dialog : GClass2379
 		}
 
 		// Quit Dialog Option
-		GClass2357 quitDialogOption = new GClass2357(new DialogOptionDataStruct(ETraderDialogType.Quit, GClass3353.EDialogState.CommonFarewell, (Utils.TraderIdToName(_traderInfo.Id).ToLower() + "_generic_farewell_01")), "Trading/Dialog"+ Utils.TraderIdToName(_traderInfo.Id) +"/Quit", GStruct268.EDialogLiteIconType.QuitIcon, null, null, ECommand.Escape);
+		GClass2357 quitDialogOption = new GClass2357(new DialogOptionDataStruct(ETraderDialogType.Quit, GClass3353.EDialogState.CommonFarewell, (Utils.TraderIdToName(_traderInfo.Id).ToLower() + "_generic_farewell_01")), "Trading/Dialog/"+ Utils.TraderIdToName(_traderInfo.Id) +"/Quit", GStruct268.EDialogLiteIconType.QuitIcon, null, null, ECommand.Escape);
 		dialogOptionList.Add(quitDialogOption);
 		
 		method_0(dialogOptionList);
