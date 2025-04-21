@@ -115,6 +115,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule" />
+    	<Reference Include="UnityEngine.UnityWebRequestModule" />
+      <Reference Include="UnityEngine.UnityWebRequestAudioModule" />
+      <Reference Include="AnimationSystem.Types" />
+      <Reference Include="Newtonsoft.Json" />
+      <Reference Include="UnityEngine.AudioModule" />
     <Reference Include="bsg.console.core, Version=0.0.0.0, Culture=neutral, processorArchitecture=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\bsg.console.core.dll</HintPath>
@@ -128,19 +134,22 @@
     </Reference>
   </ItemGroup>
     <ItemGroup>
-        <Compile Include="Components\TraderBuilder.cs" />
-        <Compile Include="Components\TraderInteractable.cs" />
-        <Compile Include="Dialog.cs" />
-        <Compile Include="ETraderNewsDialogState.cs" />
+        <Compile Include="Builders\TraderBuilder.cs" />
+        <Compile Include="Dialog\Dialog.cs" />
+        <Compile Include="Dialog\GeneralDialogHandler.cs" />
+        <Compile Include="Helpers\AssetHelper.cs" />
+        <Compile Include="Helpers\Assets.cs" />
+        <Compile Include="Interactables\ChatInteractable.cs" />
+        <Compile Include="Interactables\TraderInteractable.cs" />
         <Compile Include="Patches\AvailableActionsPatch.cs" />
         <Compile Include="Patches\GameWorldStartPatch.cs" />
         <Compile Include="Patches\TraderScreensGroupPatch.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
         <Compile Include="Plugin\AssemblyInfoClass.cs" />
-        <Compile Include="Plugin\Globals.cs" />
         <Compile Include="Plugin\Plugin.cs" />
-        <Compile Include="GeneralDialogHandler.cs" />
-        <Compile Include="Utils.cs" />
+        <Compile Include="Utils\ETraderNewsDialogState.cs" />
+        <Compile Include="Utils\Globals.cs" />
+        <Compile Include="Utils\Utils.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,7 @@ using System.Reflection;
 using Comfort.Common;
 using EFT;
 using EFT.Interactive;
-using InRaidTraders.Components;
+using InRaidTraders.Builders;
 using SPT.Reflection.Patching;
 using UnityEngine;
 
@@ -18,153 +18,153 @@ public class GameWorldStartPatch : ModulePatch
     [PatchPrefix]
     public static void PatchPrefix()
     {
-        string playerLocation = Singleton<GameWorld>.Instance.MainPlayer.Location;
+        Player player = Singleton<GameWorld>.Instance.MainPlayer;
         int seedSpawnChance = Random.Range(0, 100);
         
-        if (playerLocation.Equals(Globals.WOODS))
+        if (player.Location.Equals(Globals.WOODS))
         {
-            if (seedSpawnChance <= Plugin.praporSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.PraporSpawnChance.Value)
             {
                 GameObject door = GameObject.Find("SBG_Woods_Combined/SOO_LOD0/DOORS/Outside_Door_Wood_09_L_210-100/Outside_Door_Wood_09_L_210-100_door");
                 door.GetComponent<Door>().DoorState -= EDoorState.Locked;
                 door.GetComponent<Door>().DoorState = EDoorState.Shut;   
                 
-                TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 8.702f, 179.3f), 
-                    new Vector3(1f, 1f, 1f), true);
+                TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 7.702f, 179.3f), 
+                    new Vector3(0, 0, 0),new Vector3(1f, 1f, 1f), true);
             }
-            if (seedSpawnChance <= Plugin.jaegerSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.JaegerSpawnChance.Value && player.Profile.TradersInfo[Globals.JAEGER_ID].Unlocked)
             {
                 int campsiteLocationRandomness = Random.Range(0, 100);
                 if (campsiteLocationRandomness <= 0.33f)
                 {
                     // Campsite near Encrypted Message
                     TraderBuilder.Build(Globals.JAEGER_ID, new Vector3(-255.45f, 8.75f, 14.5f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 } else if (campsiteLocationRandomness >= 0.33f && campsiteLocationRandomness <= 0.66f)
                 {
                     // Gravesite with 'Protect the Sky' mission item
                     TraderBuilder.Build(Globals.JAEGER_ID, new Vector3(-55.02f, 9.35f, -500.9f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 } else if (campsiteLocationRandomness >= 0.66f)
                 {
                     // Behind large rock at the Signal Zone
                     TraderBuilder.Build(Globals.JAEGER_ID, new Vector3(355.15f, 0f, -87f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 }
             }
         }
-        if (playerLocation.Equals(Globals.STREETS))
+        if (player.Location.Equals(Globals.STREETS))
         {
             StreetsPatches();
-            if (seedSpawnChance <= Plugin.therapistSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.TherapistSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.THERAPIST_ID, new Vector3(-180.89f, 3.53f, 255.56f),
-                    new Vector3(0.5f, 0.5f, 0.5f), true);
+                    new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
             
-            if (seedSpawnChance <= Plugin.fenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(-71.7f, 4f, 265.3f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.33f && fenceLocationRandomness <= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(102.9f, -0.5f, 87.5f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(-90.8f, -1.45f, 178.12f),
-                        new Vector3(1f, 1.5f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
                 }
             }
         }
-        if (playerLocation.Equals(Globals.SNORELINE))
+        if (player.Location.Equals(Globals.SNORELINE))
         {
             SnorelinePatches();
-            if (seedSpawnChance <= Plugin.skierSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.SkierSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.SKIER_ID, new Vector3(-911.8f, -48.4f, 262.6f),
-                    new Vector3(0.8f, 1.5f, 0.8f), true);
+                    new Vector3(0, 0, 0),new Vector3(0.8f, 1.5f, 0.8f), true);
             }
-            if (seedSpawnChance <= Plugin.peacekeeperSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.PeacekeeperSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.PEACEKEEPER_ID, Singleton<GameWorld>.Instance.MainPlayer.Transform.position,
-                    new Vector3(1, 1, 1), true);
+                    new Vector3(0, 0, 0),new Vector3(1, 1, 1), true);
             }
-            if (seedSpawnChance <= Plugin.fenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(280.1f, -58.5f, 295.2f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.33f && fenceLocationRandomness <= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(-233.8f, -40f, 165.7f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(-243.6f, -1.6f, -139f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 }
             }
 
         }
-        if (playerLocation.Equals(Globals.INTERCHANGE))
+        if (player.Location.Equals(Globals.INTERCHANGE))
         {
             InterchangePatches();
-            if (seedSpawnChance <= Plugin.ragmanSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.RagmanSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.RAGMAN_ID, new Vector3(261.4f, 22f, -4.8f),
-                    new Vector3(1f, 1.5f, 1f), true);
+                    new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
             }
-            if (seedSpawnChance <= Plugin.fenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(314.2f, 19.7f, -366.5f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.33f && fenceLocationRandomness <= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(11.5f, 22.2f, -167.25f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 } else if (fenceLocationRandomness >= 0.66f)
                 {
                     TraderBuilder.Build(Globals.FENCE_ID, new Vector3(-19.8f, 22.4f, 171.3f),
-                        new Vector3(1f, 1.75f, 1f), true);
+                        new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
                 }
             }
         }
-        if (playerLocation.Equals(Globals.FACTORY_NIGHT))
+        if (player.Location.Equals(Globals.FACTORY_NIGHT))
         {
             FactoryPatches();
-            if (seedSpawnChance <= (Plugin.mechanicSpawnChance.Value))
+            if (seedSpawnChance <= (Plugin.MechanicSpawnChance.Value))
             {
                 TraderBuilder.Build(Globals.MECHANIC_ID, new Vector3(-15.21f, -1.23f, 43.4f),
-                    new Vector3(0.5f, 0.5f, 0.5f), true);
+                    new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
-            if (seedSpawnChance <= Plugin.fenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.FENCE_ID, new Vector3(5.1f, -0.77f, 65.4f),
-                    new Vector3(1f, 1.75f, 1f), true);
+                    new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
             }
         }
-        if (playerLocation.Equals(Globals.FACTORY_DAY))
+        if (player.Location.Equals(Globals.FACTORY_DAY))
         {
             FactoryPatches();
-            if (seedSpawnChance <= (Plugin.mechanicSpawnChance.Value / 8.5))
+            if (seedSpawnChance <= (Plugin.MechanicSpawnChance.Value / 8.5))
             {
                 TraderBuilder.Build(Globals.MECHANIC_ID, new Vector3(-15.21f, -1.23f, 43.4f),
-                    new Vector3(0.5f, 0.5f, 0.5f), true);
+                    new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
-            if (seedSpawnChance <= Plugin.fenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
 
                 TraderBuilder.Build(Globals.FENCE_ID, new Vector3(5.1f, -0.77f, 65.4f),
-                    new Vector3(1f, 1.75f, 1f), true);
+                    new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
             }
         }
         // Find and enable all the Interactive objects after Player.create<T>, since it overrides it.

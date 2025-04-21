@@ -33,7 +33,6 @@ public class TraderDialogScreenPatch : ModulePatch
         if (___string_0 == Globals.PRAPOR_ID)
         {            
             ___gclass2336_0 = new GeneralDialogHandler(___profile_0, Globals.PRAPOR_ID, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
-            
             ___gclass2336_0.OnActionFinished += __instance.method_5;
             ___UI.AddDisposable(__instance.method_7);
             ___UI.AddDisposable(___gclass2336_0);
@@ -88,7 +87,7 @@ public class TraderDialogScreenPatch : ModulePatch
         if (___string_0 == Globals.MECHANIC_ID)
         {            
             ___gclass2336_0 = new GeneralDialogHandler(___profile_0, Globals.MECHANIC_ID, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
-            
+
             ___gclass2336_0.OnActionFinished += __instance.method_5;
             ___UI.AddDisposable(__instance.method_7);
             ___UI.AddDisposable(___gclass2336_0);

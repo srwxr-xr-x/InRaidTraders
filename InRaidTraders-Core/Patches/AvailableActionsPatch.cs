@@ -1,7 +1,7 @@
 using System.Reflection;
 using EFT;
 using HarmonyLib;
-using InRaidTraders.Components;
+using InRaidTraders.Interactables;
 using SPT.Reflection.Patching;
 
 namespace InRaidTraders.Patches;
@@ -20,6 +20,13 @@ public class AvailableActionsPatch : ModulePatch
         {
             TraderInteractable trader = interactive as TraderInteractable;
             ActionsReturnClass newResult = trader.GetActions();
+            __result = newResult;
+            return false;
+        }
+        if (interactive is ChatInteractable)
+        {
+            ChatInteractable chat = interactive as ChatInteractable;
+            ActionsReturnClass newResult = chat.GetActions();
             __result = newResult;
             return false;
         }
