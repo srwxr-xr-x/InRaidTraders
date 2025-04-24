@@ -7,7 +7,7 @@ using EFT.Trading;
 using InRaidTraders.Utils;
 using Random = UnityEngine.Random;
 
-namespace InRaidTraders;
+namespace InRaidTraders.Dialog;
 
 public class Dialog : GClass2379
 {
@@ -67,18 +67,16 @@ public class Dialog : GClass2379
 			}
 		}
 		// Services Dialog Option
-		
-		if (_traderInfo.Id == "5ac3b934156ae10c4430e83c")
+		if (_traderInfo.Id == Globals.RAGMAN_ID)
 		{
-			GClass2357 servicesDialogOption = new GClass2357(
+			GClass2357 tradingDialogOption = new GClass2357(
 				new DialogOptionDataStruct(ETraderDialogType.Services, 
 										GClass3353.EDialogState.AvailableServices,
 					"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices/Description".Localized()),
 				"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
 				GStruct268.EDialogLiteIconType.Suitcase);
-			servicesDialogOption.OnChangeDialog += OpenServicesUI;
-			servicesDialogOption.IsActiveAndInteractive = true;
-			dialogOptionList.Add(servicesDialogOption);
+			tradingDialogOption.OnChangeDialog += OpenServicesUI;
+			dialogOptionList.Add(tradingDialogOption);
 		}
 
 		// Quit Dialog Option

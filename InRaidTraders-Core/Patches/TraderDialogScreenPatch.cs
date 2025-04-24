@@ -3,6 +3,7 @@ using EFT;
 using EFT.InventoryLogic;
 using EFT.UI;
 using HarmonyLib;
+using InRaidTraders.Dialog;
 using SPT.Reflection.Patching;
 
 namespace InRaidTraders.Patches;

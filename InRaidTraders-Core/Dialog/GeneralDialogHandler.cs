@@ -3,7 +3,7 @@ using EFT;
 using EFT.InventoryLogic;
 using EFT.Trading;
 
-namespace InRaidTraders;
+namespace InRaidTraders.Dialog;
 
 public class GeneralDialogHandler(
     Profile profile,
