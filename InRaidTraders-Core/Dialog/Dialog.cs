@@ -66,6 +66,7 @@ public class Dialog : GClass2379
 				}
 			}
 		}
+		
 		// Services Dialog Option
 		if (_traderInfo.Id == Globals.RAGMAN_ID)
 		{

@@ -133,10 +133,14 @@
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\bsg.componentace.compression.libs.zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
+  	<ItemGroup>
+	  <ProjectReference Include="..\InRaidTraders-Prepatcher\InRaidTraders-Prepatcher.csproj" />
+	</ItemGroup>
     <ItemGroup>
         <Compile Include="Builders\TraderBuilder.cs" />
         <Compile Include="Dialog\Dialog.cs" />
         <Compile Include="Dialog\GeneralDialogHandler.cs" />
+        <Compile Include="Dialog\TradingDialogOption.cs" />
         <Compile Include="Helpers\AssetHelper.cs" />
         <Compile Include="Helpers\Assets.cs" />
         <Compile Include="Interactables\ChatInteractable.cs" />
