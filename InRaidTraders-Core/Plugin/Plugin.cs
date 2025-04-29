@@ -1,11 +1,17 @@
-﻿using BepInEx;
+﻿using System.Linq;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using Comfort.Common;
+using EFT;
+using EFT.UI;
+using EFT.UI.Screens;
 using InRaidTraders.Helpers;
 using InRaidTraders.Patches;
+using UnityEngine;
 using static InRaidTraders.AssemblyInfoClass;
 
-namespace InRaidTraders;
+namespace InRaidTraders.Plugin;
 
 [BepInPlugin(InRaidTradersGUID,  InRaidTradersName, InRaidTradersVersion)]
 public class Plugin : BaseUnityPlugin
@@ -30,6 +36,7 @@ public class Plugin : BaseUnityPlugin
         InitConfiguration();
         EnablePatches();
         AssetHelper.LoadBundles();
+
     }
 
     private void InitConfiguration()
@@ -80,7 +87,7 @@ public class Plugin : BaseUnityPlugin
         new TraderDialogScreenPatch().Enable();
         new AvailableActionsPatch().Enable();
         new GameWorldStartPatch().Enable();
-        new TraderScreensGroupPatch().Enable();        
+        new TraderScreensGroupPatch().Enable(); 
     }
     
 }

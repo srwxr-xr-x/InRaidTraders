@@ -53,11 +53,11 @@
     <Reference Include="spt-reflection">
       <HintPath>..\..\..\BepInEx\plugins\spt\spt-reflection.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\..\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\BepInEx\DumpedAssemblies\EscapeFromTarkov\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Comfort">
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
@@ -111,6 +111,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
@@ -140,7 +144,6 @@
         <Compile Include="Builders\TraderBuilder.cs" />
         <Compile Include="Dialog\Dialog.cs" />
         <Compile Include="Dialog\GeneralDialogHandler.cs" />
-        <Compile Include="Dialog\TradingDialogOption.cs" />
         <Compile Include="Helpers\AssetHelper.cs" />
         <Compile Include="Helpers\Assets.cs" />
         <Compile Include="Interactables\ChatInteractable.cs" />
@@ -154,6 +157,9 @@
         <Compile Include="Utils\ETraderNewsDialogState.cs" />
         <Compile Include="Utils\Globals.cs" />
         <Compile Include="Utils\Utils.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="UI\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

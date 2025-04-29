@@ -19,8 +19,8 @@ You can report bugs and crashes by opening an issue on our [issue tracker](https
     
 ### Building with Rider
 
-In-RaidTraders uses a typical C# project structure and can be built by simply running the default `Debug` or `Release` task. After Rider
-finishes building the project, you can find the built mod in `bin/Debug` or `bin/Release`. Feel free to open a pull request!
+In-RaidTraders uses a typical C# project structure and can be built by simply running the default `Debug` or `Release` task. 
+After Rider finishes building the project, you can find the built mod in `bin/Debug` or `bin/Release`. Feel free to open a pull request!
 
 ### Development
 

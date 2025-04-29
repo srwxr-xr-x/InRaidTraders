@@ -17,7 +17,7 @@ public class AssetHelper
     private static AssetBundle LoadAndInitializePrefabs(string bundlePath)
     {
         string fullPath = AssetsDirectory + bundlePath;
-        Plugin.LogSource.LogInfo($"Loading assets from {fullPath}");
+        Plugin.Plugin.LogSource.LogInfo($"Loading assets from {fullPath}");
         AssetBundle assetBundle = AssetBundle.LoadFromFile(fullPath);
         return assetBundle;
     }
