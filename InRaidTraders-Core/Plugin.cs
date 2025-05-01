@@ -5,13 +5,12 @@ using BepInEx.Logging;
 using Comfort.Common;
 using EFT;
 using EFT.UI;
-using EFT.UI.Screens;
 using InRaidTraders.Helpers;
 using InRaidTraders.Patches;
 using UnityEngine;
 using static InRaidTraders.AssemblyInfoClass;
 
-namespace InRaidTraders.Plugin;
+namespace InRaidTraders;
 
 [BepInPlugin(InRaidTradersGUID,  InRaidTradersName, InRaidTradersVersion)]
 public class Plugin : BaseUnityPlugin
@@ -37,6 +36,25 @@ public class Plugin : BaseUnityPlugin
         EnablePatches();
         AssetHelper.LoadBundles();
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5) && Singleton<GameWorld>.Instantiated)
+        {
+            TraderClass[] tradeableArray = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
+            var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArray.First(), 
+                tradeableArray, 
+                Singleton<GameWorld>.Instance.MainPlayer.Profile, 
+                Singleton<GameWorld>.Instance.MainPlayer.InventoryController, 
+                Singleton<GameWorld>.Instance.MainPlayer.HealthController, 
+                Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass, 
+                Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,
+                Singleton<ClientApplication<ISession>>.Instance.Session);
+            MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.method_2(gClass3599);
+            MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Awake();
+            MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Show(gClass3599);
+        }
     }
 
     private void InitConfiguration()
@@ -88,6 +106,7 @@ public class Plugin : BaseUnityPlugin
         new AvailableActionsPatch().Enable();
         new GameWorldStartPatch().Enable();
         new TraderScreensGroupPatch().Enable(); 
+        new TradingPlayerPanelPatch().Enable();
     }
     
 }

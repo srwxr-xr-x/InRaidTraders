@@ -125,17 +125,13 @@ public class Dialog : GClass2379
 
 	private void OpenServicesUI(DialogOptionDataStruct test, GStruct267 test2)
 	{		
-		Plugin.Plugin.LogSource.LogWarning("Called OpenServicesUI");
+		Plugin.LogSource.LogWarning("Called OpenServicesUI");
 	}
 
-	private void OpenTradingUI(DialogOptionDataStruct test, GStruct267 test2)
+	private void OpenTradingUI(DialogOptionDataStruct dialogOptionStruct, GStruct267 test2)
 	{		
-		Plugin.Plugin.LogSource.LogWarning("Called OpenTradingUI");
-		AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive, true, null);
+		Plugin.LogSource.LogWarning("Called OpenTradingUI");
 		
-		TraderClass[] array = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
-		
-		MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Show(new TraderScreensGroup.GClass3599(array.First(), array, _profile, _inventoryController, Singleton<GameWorld>.Instance.MainPlayer.HealthController, _questController, Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,Singleton<ClientApplication<ISession>>.Instance.Session));
 
 	}
 

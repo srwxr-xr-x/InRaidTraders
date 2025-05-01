@@ -22,7 +22,7 @@ public class TraderBuilder
 
         if (_debug)
         {
-            Plugin.Plugin.LogSource.LogDebug("InteractableBuilder<" + _traderID + "> created");  
+            Plugin.LogSource.LogDebug("InteractableBuilder<" + _traderID + "> created");  
             
         }
         return CreateGameObject();

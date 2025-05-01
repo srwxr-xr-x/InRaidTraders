@@ -3,9 +3,11 @@ using System.Reflection;
 using Comfort.Common;
 using EFT;
 using EFT.Interactive;
+using EFT.UI;
 using InRaidTraders.Builders;
 using SPT.Reflection.Patching;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace InRaidTraders.Patches;
 
@@ -23,7 +25,7 @@ public class GameWorldStartPatch : ModulePatch
         
         if (player.Location.Equals(Globals.WOODS))
         {
-            if (seedSpawnChance <= Plugin.Plugin.PraporSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.PraporSpawnChance.Value)
             {
                 GameObject door = GameObject.Find("SBG_Woods_Combined/SOO_LOD0/DOORS/Outside_Door_Wood_09_L_210-100/Outside_Door_Wood_09_L_210-100_door");
                 door.GetComponent<Door>().DoorState -= EDoorState.Locked;
@@ -32,7 +34,7 @@ public class GameWorldStartPatch : ModulePatch
                 TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 7.702f, 179.3f), 
                     new Vector3(0, 0, 0),new Vector3(1f, 1f, 1f), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.JaegerSpawnChance.Value && player.Profile.TradersInfo[Globals.JAEGER_ID].Unlocked)
+            if (seedSpawnChance <= Plugin.JaegerSpawnChance.Value && player.Profile.TradersInfo[Globals.JAEGER_ID].Unlocked)
             {
                 int campsiteLocationRandomness = Random.Range(0, 100);
                 if (campsiteLocationRandomness <= 0.33f)
@@ -56,13 +58,13 @@ public class GameWorldStartPatch : ModulePatch
         if (player.Location.Equals(Globals.STREETS))
         {
             StreetsPatches();
-            if (seedSpawnChance <= Plugin.Plugin.TherapistSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.TherapistSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.THERAPIST_ID, new Vector3(-180.89f, 3.53f, 255.56f),
                     new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
             
-            if (seedSpawnChance <= Plugin.Plugin.FenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
@@ -83,17 +85,17 @@ public class GameWorldStartPatch : ModulePatch
         if (player.Location.Equals(Globals.SNORELINE))
         {
             SnorelinePatches();
-            if (seedSpawnChance <= Plugin.Plugin.SkierSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.SkierSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.SKIER_ID, new Vector3(-911.8f, -48.4f, 262.6f),
                     new Vector3(0, 0, 0),new Vector3(0.8f, 1.5f, 0.8f), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.PeacekeeperSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.PeacekeeperSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.PEACEKEEPER_ID, Singleton<GameWorld>.Instance.MainPlayer.Transform.position,
                     new Vector3(0, 0, 0),new Vector3(1, 1, 1), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.FenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
@@ -115,12 +117,12 @@ public class GameWorldStartPatch : ModulePatch
         if (player.Location.Equals(Globals.INTERCHANGE))
         {
             InterchangePatches();
-            if (seedSpawnChance <= Plugin.Plugin.RagmanSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.RagmanSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.RAGMAN_ID, new Vector3(261.4f, 22f, -4.8f),
                     new Vector3(0, 0, 0),new Vector3(1f, 1.5f, 1f), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.FenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 int fenceLocationRandomness = Random.Range(0, 100);
                 if (fenceLocationRandomness <= 0.33f)
@@ -141,12 +143,12 @@ public class GameWorldStartPatch : ModulePatch
         if (player.Location.Equals(Globals.FACTORY_NIGHT))
         {
             FactoryPatches();
-            if (seedSpawnChance <= (Plugin.Plugin.MechanicSpawnChance.Value))
+            if (seedSpawnChance <= (Plugin.MechanicSpawnChance.Value))
             {
                 TraderBuilder.Build(Globals.MECHANIC_ID, new Vector3(-15.21f, -1.23f, 43.4f),
                     new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.FenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
                 TraderBuilder.Build(Globals.FENCE_ID, new Vector3(5.1f, -0.77f, 65.4f),
                     new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
@@ -155,12 +157,12 @@ public class GameWorldStartPatch : ModulePatch
         if (player.Location.Equals(Globals.FACTORY_DAY))
         {
             FactoryPatches();
-            if (seedSpawnChance <= (Plugin.Plugin.MechanicSpawnChance.Value / 8.5))
+            if (seedSpawnChance <= (Plugin.MechanicSpawnChance.Value / 8.5))
             {
                 TraderBuilder.Build(Globals.MECHANIC_ID, new Vector3(-15.21f, -1.23f, 43.4f),
                     new Vector3(0, 0, 0),new Vector3(0.5f, 0.5f, 0.5f), true);
             }
-            if (seedSpawnChance <= Plugin.Plugin.FenceSpawnChance.Value)
+            if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
 
                 TraderBuilder.Build(Globals.FENCE_ID, new Vector3(5.1f, -0.77f, 65.4f),
@@ -175,7 +177,12 @@ public class GameWorldStartPatch : ModulePatch
             interact.GetComponent<BoxCollider>().enabled = true;
         }
     }
-
+    [PatchPostfix]
+    public static void PatchPostfix()
+    {
+        AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive);
+       
+    }
     private static void StreetsPatches()
     {
         GameObject streets = GameObject.Find("SBG_City_NE_02_TD_Klimova_indoor_2ST_NEW/OO/PROPS/F1_Switchboard/small/");
