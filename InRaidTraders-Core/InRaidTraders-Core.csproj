@@ -151,9 +151,9 @@
         <Compile Include="Interactables\TraderInteractable.cs" />
         <Compile Include="Patches\AvailableActionsPatch.cs" />
         <Compile Include="Patches\GameWorldStartPatch.cs" />
+        <Compile Include="Patches\MainMenuControllerClassPatch.cs" />
         <Compile Include="Patches\TraderScreensGroupPatch.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
-        <Compile Include="Patches\TraingPlayerPanelPatch.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Utils\ETraderNewsDialogState.cs" />
         <Compile Include="Utils\Globals.cs" />

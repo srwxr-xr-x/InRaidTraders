@@ -180,8 +180,27 @@ public class GameWorldStartPatch : ModulePatch
     [PatchPostfix]
     public static void PatchPostfix()
     {
+        Singleton<GameWorld>.Instance.MainPlayer.Inventory.Stash = Globals.playerStash;
+        Singleton<GameWorld>.Instance.MainPlayer.Inventory.QuestStashItems = Singleton<ItemFactoryClass>.Instance.CreateFakeStash(null);
         AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive);
-       
+    }
+
+    private static void UIPatches()
+    {
+        
+        GameObject traderScreensGroup = MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.gameObject;
+        GameObject container = traderScreensGroup.transform.Find("TopPanel/Container/").gameObject;
+        container.transform.Find("Right Person/Tile").localPosition = new Vector3(-490f, -85.5f, 0f);
+
+        container.transform.Find("Right Person/Background Tile").gameObject.SetActive(false);
+        container.transform.Find("Pattern").gameObject.SetActive(false);
+        container.transform.Find("SeparatorBottom").gameObject.SetActive(false);
+        container.transform.Find("SeparatorTop").gameObject.SetActive(false);
+        traderScreensGroup.transform.Find("/Tab Bar/Tabs/Services").gameObject.SetActive(false);
+        
+        container.transform.Find("Right Person/Background").localPosition = new Vector3(-542f, -85.5f, 0f);
+        container.transform.Find("Right Person/Background").localScale = new Vector3(1.175f, 1f, 1f);
+
     }
     private static void StreetsPatches()
     {

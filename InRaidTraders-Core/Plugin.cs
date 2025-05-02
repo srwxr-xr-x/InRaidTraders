@@ -5,6 +5,7 @@ using BepInEx.Logging;
 using Comfort.Common;
 using EFT;
 using EFT.UI;
+using HarmonyLib;
 using InRaidTraders.Helpers;
 using InRaidTraders.Patches;
 using UnityEngine;
@@ -35,16 +36,18 @@ public class Plugin : BaseUnityPlugin
         InitConfiguration();
         EnablePatches();
         AssetHelper.LoadBundles();
-
+        
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5) && Singleton<GameWorld>.Instantiated)
         {
+            
             TraderClass[] tradeableArray = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
-            var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArray.First(), 
-                tradeableArray, 
+            TraderClass[] tradeableArrayTherapist = new []{tradeableArray[1]};
+            var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArrayTherapist.First(), 
+                tradeableArrayTherapist, 
                 Singleton<GameWorld>.Instance.MainPlayer.Profile, 
                 Singleton<GameWorld>.Instance.MainPlayer.InventoryController, 
                 Singleton<GameWorld>.Instance.MainPlayer.HealthController, 
@@ -54,9 +57,10 @@ public class Plugin : BaseUnityPlugin
             MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.method_2(gClass3599);
             MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Awake();
             MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Show(gClass3599);
+
         }
     }
-
+    
     private void InitConfiguration()
     {
         PraporSpawnChance = Config.Bind(
@@ -104,9 +108,9 @@ public class Plugin : BaseUnityPlugin
     {
         new TraderDialogScreenPatch().Enable();
         new AvailableActionsPatch().Enable();
-        new GameWorldStartPatch().Enable();
         new TraderScreensGroupPatch().Enable(); 
-        new TradingPlayerPanelPatch().Enable();
+        new GameWorldStartPatch().Enable();
+        new MainMenuControllerClassPatch().Enable();
     }
     
 }

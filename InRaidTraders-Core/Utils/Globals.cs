@@ -29,5 +29,6 @@ public class Globals
     public const string LIGHTHOUSE = "Lighthouse";
     public const string STREETS = "TarkovStreets";
     public const string GROUND_ZERO = "Sandbox";
-    
+
+    public static StashItemClass playerStash;
 }
