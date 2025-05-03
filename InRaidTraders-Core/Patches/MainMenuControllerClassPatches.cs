@@ -1,13 +1,10 @@
 using System.Reflection;
-using EFT;
-using EFT.UI;
 using HarmonyLib;
-using PlayerIcons;
 using SPT.Reflection.Patching;
 
 namespace InRaidTraders.Patches;
 
-public class MainMenuControllerClassPatch: ModulePatch
+public class Method5Patch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
@@ -18,6 +15,5 @@ public class MainMenuControllerClassPatch: ModulePatch
     public static void Postfix(MainMenuControllerClass __instance)
     {
         Globals.playerStash = __instance.InventoryController.Inventory.Stash;
-        Plugin.LogSource.LogWarning(Globals.playerStash);
     }
 }

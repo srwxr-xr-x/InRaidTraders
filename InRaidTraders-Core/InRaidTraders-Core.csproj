@@ -142,21 +142,22 @@
 	</ItemGroup>
     <ItemGroup>
         <Compile Include="AssemblyInfoClass.cs" />
-        <Compile Include="Builders\TraderBuilder.cs" />
         <Compile Include="Dialog\Dialog.cs" />
         <Compile Include="Dialog\GeneralDialogHandler.cs" />
-        <Compile Include="Helpers\AssetHelper.cs" />
-        <Compile Include="Helpers\Assets.cs" />
         <Compile Include="Interactables\ChatInteractable.cs" />
         <Compile Include="Interactables\TraderInteractable.cs" />
         <Compile Include="Patches\AvailableActionsPatch.cs" />
         <Compile Include="Patches\GameWorldStartPatch.cs" />
-        <Compile Include="Patches\MainMenuControllerClassPatch.cs" />
-        <Compile Include="Patches\TraderScreensGroupPatch.cs" />
+        <Compile Include="Patches\MainMenuControllerClassPatches.cs" />
+        <Compile Include="Patches\TraderCardPatch.cs" />
+        <Compile Include="Patches\TraderScreensGroupPatches.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Utils\ETraderNewsDialogState.cs" />
         <Compile Include="Utils\Globals.cs" />
+        <Compile Include="Utils\Helpers\AssetHelper.cs" />
+        <Compile Include="Utils\Helpers\Assets.cs" />
+        <Compile Include="Utils\TraderBuilder.cs" />
         <Compile Include="Utils\Utils.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>

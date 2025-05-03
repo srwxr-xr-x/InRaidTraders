@@ -41,7 +41,7 @@ public class GeneralDialogHandler(
             case ETraderDialogType.QuestList:
                 return new GClass2382(Trader, abstractQuestControllerClass, inventoryController_0, this, source);
             case ETraderDialogType.Main:
-                return new Dialog(Trader, profile_0, abstractQuestControllerClass, inventoryController_0, this, source);
+                return new Dialog(Trader, abstractQuestControllerClass, inventoryController_0, this, source);
             case ETraderDialogType.None:
                 return null;
             default:

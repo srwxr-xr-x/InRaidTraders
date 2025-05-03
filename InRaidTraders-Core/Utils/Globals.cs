@@ -31,4 +31,5 @@ public class Globals
     public const string GROUND_ZERO = "Sandbox";
 
     public static StashItemClass playerStash;
+    public static bool disableTrading;
 }

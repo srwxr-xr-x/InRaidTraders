@@ -31,7 +31,7 @@ public class GameWorldStartPatch : ModulePatch
                 door.GetComponent<Door>().DoorState -= EDoorState.Locked;
                 door.GetComponent<Door>().DoorState = EDoorState.Shut;   
                 
-                TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 7.702f, 179.3f), 
+                TraderBuilder.Build(Globals.PRAPOR_ID, new Vector3(-655.235f, 8.702f, 179.3f), 
                     new Vector3(0, 0, 0),new Vector3(1f, 1f, 1f), true);
             }
             if (seedSpawnChance <= Plugin.JaegerSpawnChance.Value && player.Profile.TradersInfo[Globals.JAEGER_ID].Unlocked)
@@ -181,13 +181,12 @@ public class GameWorldStartPatch : ModulePatch
     public static void PatchPostfix()
     {
         Singleton<GameWorld>.Instance.MainPlayer.Inventory.Stash = Globals.playerStash;
-        Singleton<GameWorld>.Instance.MainPlayer.Inventory.QuestStashItems = Singleton<ItemFactoryClass>.Instance.CreateFakeStash(null);
+        Singleton<GameWorld>.Instance.MainPlayer.Inventory.QuestStashItems = Singleton<ItemFactoryClass>.Instance.CreateFakeStash();
         AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive);
     }
 
     private static void UIPatches()
     {
-        
         GameObject traderScreensGroup = MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.gameObject;
         GameObject container = traderScreensGroup.transform.Find("TopPanel/Container/").gameObject;
         container.transform.Find("Right Person/Tile").localPosition = new Vector3(-490f, -85.5f, 0f);
@@ -200,7 +199,6 @@ public class GameWorldStartPatch : ModulePatch
         
         container.transform.Find("Right Person/Background").localPosition = new Vector3(-542f, -85.5f, 0f);
         container.transform.Find("Right Person/Background").localScale = new Vector3(1.175f, 1f, 1f);
-
     }
     private static void StreetsPatches()
     {

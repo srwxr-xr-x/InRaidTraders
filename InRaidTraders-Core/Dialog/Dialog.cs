@@ -23,17 +23,11 @@ public class Dialog : GClass2379
 	public override string BaseDescriptionKey { get; }
 	private readonly Profile.TraderInfo _traderInfo;
 	private readonly GInterface237 _stateStorage;
-	private readonly InventoryController _inventoryController;
-	private readonly Profile _profile;
-	private readonly AbstractQuestControllerClass _questController;
 
-	public Dialog(Profile.TraderInfo traderData, Profile profile, AbstractQuestControllerClass quests, InventoryController inventoryController, GInterface237 stateStorage, DialogOptionDataStruct source) : base(traderData, quests, inventoryController, source)
+	public Dialog(Profile.TraderInfo traderData, AbstractQuestControllerClass quests, InventoryController inventoryController, GInterface237 stateStorage, DialogOptionDataStruct source) : base(traderData, quests, inventoryController, source)
 	{
 		_traderInfo = traderData;
 		_stateStorage = stateStorage;
-		_inventoryController = inventoryController;
-		_profile = profile;
-		_questController = quests;
 		if (!source.DescriptionKey.IsNullOrEmpty())
 		{
 			BaseDescriptionKey = source.DescriptionKey;
@@ -70,7 +64,8 @@ public class Dialog : GClass2379
 		// Quest Dialog
 		if (inventoryController_0.Profile.Side != EPlayerSide.Savage)
 		{
-			GClass2382 questOptions = new GClass2382(traderInfo_0, abstractQuestControllerClass, inventoryController_0, _stateStorage, Source);
+			GClass2382 questOptions = new GClass2382(traderInfo_0, abstractQuestControllerClass, inventoryController_0,
+				_stateStorage, Source);
 			compositeDisposableClass.AddDisposable(questOptions);
 			foreach (GClass2341 questDialog in questOptions.Lines)
 			{
@@ -79,28 +74,31 @@ public class Dialog : GClass2379
 					dialogOptionList.Add(questDialog);
 				}
 			}
-		}
-		// Trading Dialog Option
-		GClass2357 tradingDialogOption = new GClass2357(
-			new DialogOptionDataStruct(ETraderDialogType.None, 
-				GClass3353.EDialogState.None,
-				"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/Trading/Description".Localized()),
-			"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/Trading",
-			GStruct268.EDialogLiteIconType.ShoppingCart, null, null, ECommand.Escape);
-		tradingDialogOption.OnChangeDialog += OpenTradingUI;
-		dialogOptionList.Add(tradingDialogOption);
-		
-		// Services Dialog Option
-		if (_traderInfo.Id == Globals.RAGMAN_ID)
-		{
-			GClass2357 servicesDialogOption = new GClass2357(
-				new DialogOptionDataStruct(ETraderDialogType.Services, 
-										GClass3353.EDialogState.AvailableServices,
-					"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices/Description".Localized()),
-				"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
-				GStruct268.EDialogLiteIconType.Suitcase);
-			servicesDialogOption.OnChangeDialog += OpenServicesUI;
-			dialogOptionList.Add(servicesDialogOption);
+
+			// Trading Dialog Option
+			GClass2357 tradingDialogOption = new GClass2357(
+				new DialogOptionDataStruct(ETraderDialogType.None,
+					GClass3353.EDialogState.None,
+					"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
+					"/Trading/Description".Localized()),
+				"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/Trading",
+				GStruct268.EDialogLiteIconType.ShoppingCart);
+			tradingDialogOption.OnChangeDialog += OpenTradingUI;
+			dialogOptionList.Add(tradingDialogOption);
+
+			// Services Dialog Option
+			if (_traderInfo.Id == Globals.RAGMAN_ID)
+			{
+				GClass2357 servicesDialogOption = new GClass2357(
+					new DialogOptionDataStruct(ETraderDialogType.Services,
+						GClass3353.EDialogState.AvailableServices,
+						"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
+						"/AvailableServices/Description".Localized()),
+					"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
+					GStruct268.EDialogLiteIconType.Suitcase);
+				servicesDialogOption.OnChangeDialog += OpenServicesUI;
+				dialogOptionList.Add(servicesDialogOption);
+			}
 		}
 
 		// Quit Dialog Option
@@ -109,10 +107,7 @@ public class Dialog : GClass2379
 				GClass3353.EDialogState.CommonFarewell, 
 				(Utils.Utils.TraderIdToName(_traderInfo.Id).ToLower() + "_generic_farewell_01")), 
 			"Trading/Dialog/"+ Utils.Utils.TraderIdToName(_traderInfo.Id) +"/Quit", 
-			GStruct268.EDialogLiteIconType.QuitIcon, 
-			null, 
-			null, 
-			ECommand.Escape);
+			GStruct268.EDialogLiteIconType.QuitIcon);
 		dialogOptionList.Add(quitDialogOption);
 		
 		method_0(dialogOptionList);
@@ -129,10 +124,24 @@ public class Dialog : GClass2379
 	}
 
 	private void OpenTradingUI(DialogOptionDataStruct dialogOptionStruct, GStruct267 test2)
-	{		
-		Plugin.LogSource.LogWarning("Called OpenTradingUI");
-		
+	{
+		if (!Input.GetKeyDown(KeyCode.Escape))
+		{
+			TraderClass[] tradeableArray = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
+			TraderClass[] tradeableArrayTherapist = new []{tradeableArray[1]};
+			var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArrayTherapist.First(), 
+				tradeableArrayTherapist, 
+				Singleton<GameWorld>.Instance.MainPlayer.Profile, 
+				Singleton<GameWorld>.Instance.MainPlayer.InventoryController, 
+				Singleton<GameWorld>.Instance.MainPlayer.HealthController, 
+				Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass, 
+				Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,
+				Singleton<ClientApplication<ISession>>.Instance.Session);
 
+			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.method_2(gClass3599);
+			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Awake();
+			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Show(gClass3599);
+		}
 	}
 
 	private void UpdateServices()

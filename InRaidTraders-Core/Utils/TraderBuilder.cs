@@ -32,21 +32,8 @@ public class TraderBuilder
     {
         GameObject interactableObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         interactableObject.name = Globals.INTERACTIVE_UUID + " -- " + _traderID;
-
-        if (Globals.PRAPOR_ID == _traderID) // Testing with only the prapor bundle lolz
-        {
-            if (_traderID is not (Globals.MECHANIC_ID or Globals.THERAPIST_ID))
-            {
-                GameObject traderPrefab = Utils.Utils.MapIDToAssetBundle(_traderID)
-                    .LoadAsset<GameObject>("assets/wtt/traders/" + Utils.Utils.TraderIdToName(_traderID).ToLower() +
-                                           "_take3.prefab");
-                GameObject traderObject = Object.Instantiate(traderPrefab, _position, Quaternion.Euler(_rotation));
-                interactableObject.transform.parent = traderObject.transform;
-
-            }
-        }
-
-        interactableObject.transform.localPosition = new Vector3(0, 1, 0);
+        interactableObject.transform.position = _position;
+        interactableObject.transform.rotation = Quaternion.Euler(_rotation);
         interactableObject.transform.localScale = _scale;
         interactableObject.AddComponent<TraderInteractable>();
         interactableObject.GetComponent<BoxCollider>().enabled = false;
