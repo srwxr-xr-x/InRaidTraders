@@ -128,7 +128,16 @@ public class Dialog : GClass2379
 		if (!Input.GetKeyDown(KeyCode.Escape))
 		{
 			TraderClass[] tradeableArray = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
-			TraderClass[] tradeableArrayTherapist = new []{tradeableArray[1]};
+			TraderClass[] tradeableArrayTherapist = [tradeableArray.First()];
+			foreach (var trader in tradeableArray)
+			{
+				if (trader.Id == _traderInfo.Id)
+				{
+					tradeableArrayTherapist = [trader];
+
+				}
+			}
+			
 			var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArrayTherapist.First(), 
 				tradeableArrayTherapist, 
 				Singleton<GameWorld>.Instance.MainPlayer.Profile, 

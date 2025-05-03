@@ -17,7 +17,6 @@ public class TraderCardPatch : ModulePatch
         {
             __instance.HideGameObject();
         }
-
         if (Singleton<GameWorld>.Instantiated)
         {
             __instance.ShowGameObject();
