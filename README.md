@@ -11,7 +11,18 @@ A WIP, In-Raid Traders mod for Single Player Tarkov
     
 You will need **SPT version 3.11.x** installed. Unzip and drag the mod into the root of your SPT install, where the EXE is located.
 The mod should be under the path *SPTLocation/BepInEx/plugins/In-RaidTraders.dll*.
-    
+
+### Trader Locations
+- ​**Prapor**: Woods new area, accessible by BTR driver.
+- **Jaeger**: 3 locations around woods, 33% chance between the three, find him!
+- **Therapist**: Streets, in between sewer river and factory marked room, past the fence gate you need to breach.
+- **Ragman**: Interchange, on the main road in a inflatable tent.
+- **Mechanic**: Factory, Camera Bunker Door.
+- **Skier**: Shoreline, Watchtower near the minefields in the southeast wall.
+- **Peacekeeper**: Shoreline, UN bunker near Climber's Trail.
+- **Ref**: No location currently, will be adding ASAP.
+- **Fence**: Scattered across all maps but Customs, Labs, Lighthouse, and Ground Zero, will be added to the rest ASAP. Typically under arches and in dark places.
+
 ### Reporting Issues and Bugs
     
 You can report bugs and crashes by opening an issue on our [issue tracker](https://github.com/srwxr-xr-x/InRaidTraders/issues).
