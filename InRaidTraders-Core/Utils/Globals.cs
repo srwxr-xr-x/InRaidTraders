@@ -19,7 +19,7 @@ public class Globals
     public const string BTR_DRIVER_ID = Profile.TraderInfo.BTR_TRADER_ID;
 
     public const string INTERACTIVE_UUID = "SPT-IRT";
-    public const string CONFIG_PATH = "BepInEx/plugins/InRaidTraders-Core/Assets/Configs";
+    public const string CONFIG_PATH = "BepInEx/plugins/InRaidTraders-Core/Configs";
 
     public const string FACTORY_DAY = "factory4_day";
     public const string FACTORY_NIGHT = "factory4_night";

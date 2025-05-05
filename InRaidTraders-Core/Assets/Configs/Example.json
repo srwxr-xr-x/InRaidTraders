@@ -1,0 +1,13 @@
+[
+    {
+    "traderID": "TraderMongoID",
+    "traderName": "CustomTrader",
+    "availableEverywhere": "false",
+    "keybind": "",
+    "location": "-430,50,500",
+    "rotation": "0,0,0",
+    "scale": "1,1,1",
+    "map": "Woods",
+    "DEBUG": "true",
+    },
+]

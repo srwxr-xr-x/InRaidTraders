@@ -95,6 +95,7 @@ public class Plugin : BaseUnityPlugin
             "Jaeger Spawn Chance", 
             66f,
             "The chance that Jaeger will be in the raid");
+        
         ConfigHandler.LoadConfig();
     }
     private void EnablePatches()
@@ -105,5 +106,6 @@ public class Plugin : BaseUnityPlugin
         new GameWorldStartPatch().Enable();
         new Method5Patch().Enable();
         new TraderCardPatch().Enable();
+        new MenuScreenPatch().Enable();
     }
 }

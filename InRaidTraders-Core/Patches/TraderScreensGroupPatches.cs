@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 using Comfort.Common;
 using EFT;
@@ -24,7 +25,6 @@ public class ShowPatch : ModulePatch
         {
             ____servicesTab.gameObject.SetActive(false);
         }
-        
         return true;
     }
 }

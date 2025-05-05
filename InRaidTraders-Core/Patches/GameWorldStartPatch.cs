@@ -93,8 +93,8 @@ public class GameWorldStartPatch : ModulePatch
             }
             if (seedSpawnChance <= Plugin.PeacekeeperSpawnChance.Value)
             {
-                TraderBuilder.Build(Globals.PEACEKEEPER_ID, Singleton<GameWorld>.Instance.MainPlayer.Transform.position,
-                    new Vector3(0, 0, 0),new Vector3(1, 1, 1), true);
+                TraderBuilder.Build(Globals.PEACEKEEPER_ID, new Vector3(-152.5f, -14.1f, -301.3f),
+                    new Vector3(0, 316, 0),new Vector3(1, 1, 1), true);
             }
             if (seedSpawnChance <= Plugin.FenceSpawnChance.Value)
             {
@@ -175,7 +175,7 @@ public class GameWorldStartPatch : ModulePatch
         {
             foreach (Config configItem in configOptions)
             {
-                if (!configItem.availableEverywhere)
+                if (!configItem.availableEverywhere && seedSpawnChance <= configItem.spawnChance)
                 {
                     if (player.Location.Equals(configItem.map))
                     {

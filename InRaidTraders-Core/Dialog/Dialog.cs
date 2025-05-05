@@ -140,11 +140,12 @@ public class Dialog : GClass2379
 					tradeableArrayTherapist = [trader];
 				}
 			}
-			
+			GControl7 inventoryControllerTraders = new GControl7(Singleton<ClientApplication<ISession>>.Instance.Session, Singleton<GameWorld>.Instance.MainPlayer.Profile, Singleton<GameWorld>.Instance.MainPlayer.Profile.Id);
+
 			var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArrayTherapist.First(), 
 				tradeableArrayTherapist, 
 				Singleton<GameWorld>.Instance.MainPlayer.Profile, 
-				Singleton<GameWorld>.Instance.MainPlayer.InventoryController, 
+				inventoryControllerTraders, 
 				Singleton<GameWorld>.Instance.MainPlayer.HealthController, 
 				Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass, 
 				Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,

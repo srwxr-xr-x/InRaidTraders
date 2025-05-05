@@ -10,6 +10,7 @@ public class Config
 {
     public string traderID;
     public string traderName;
+    public int spawnChance;
     public bool availableEverywhere;
     public bool hasServices;
     public KeyCode keybind;
@@ -31,6 +32,5 @@ public class ConfigHandler
             List<Config> config = JsonConvert.DeserializeObject<List<Config>>(json);
             Globals.ConfigList.Add(config);
         }
-
     }
 }

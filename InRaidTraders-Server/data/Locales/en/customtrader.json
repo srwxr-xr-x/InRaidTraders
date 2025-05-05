@@ -1,0 +1,17 @@
+{
+"customtrader_generic_greetings_01": "Greetings 1",
+"customtrader_generic_greetings_02": "Greetings 2",
+"customtrader_generic_greetings_03": "Greetings 3",
+"customtrader_generic_greetings_04": "Greetings 4",
+"customtrader_generic_farewell_01": "Farewell 1",
+"Trading/Dialog/CustomTrader/News": "0th news option",
+"Trading/Dialog/CustomTrader/News/Next": "More news option",
+"Trading/Dialog/CustomTrader/News1": "1st news option",
+"Trading/Dialog/CustomTrader/News2": "2nd news option",
+"Trading/Dialog/CustomTrader/News3": "3rd news option",
+"Trading/Dialog/CustomTrader/News4": "4th news option",
+"Trading/Dialog/CustomTrader/News5": "5th news option",
+"Trading/Dialog/CustomTrader/NoNews": "No more news to report",
+"Trading/Dialog/CustomTrader/Trading": "Trading Dialog Option",
+"Trading/Dialog/CustomTrader/Quit": "Quit Dialog Option"
+}

@@ -142,11 +142,11 @@
         <Compile Include="AssemblyInfoClass.cs" />
         <Compile Include="Dialog\Dialog.cs" />
         <Compile Include="Dialog\GeneralDialogHandler.cs" />
-        <Compile Include="Interactables\ChatInteractable.cs" />
         <Compile Include="Interactables\TraderInteractable.cs" />
         <Compile Include="Patches\AvailableActionsPatch.cs" />
         <Compile Include="Patches\GameWorldStartPatch.cs" />
         <Compile Include="Patches\MainMenuControllerClassPatches.cs" />
+        <Compile Include="Patches\MenuScreenPatch.cs" />
         <Compile Include="Patches\TraderCardPatch.cs" />
         <Compile Include="Patches\TraderScreensGroupPatches.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
