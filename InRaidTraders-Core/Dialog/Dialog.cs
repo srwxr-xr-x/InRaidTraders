@@ -132,22 +132,20 @@ public class Dialog : GClass2379
 		if (!Input.GetKeyDown(KeyCode.Escape))
 		{
 			TraderClass[] tradeableArray = Singleton<ClientApplication<ISession>>.Instance.Session.Traders.Where(MainMenuControllerClass.Class1394.class1394_0.method_4).ToArray();
-			TraderClass[] tradeableArrayTherapist = [tradeableArray.First()];
+			TraderClass[] currentTrader = [tradeableArray.First()];
 			foreach (var trader in tradeableArray)
 			{
 				if (trader.Id == _traderInfo.Id)
 				{
-					tradeableArrayTherapist = [trader];
+					currentTrader = [trader];
 				}
 			}
-			GControl7 inventoryControllerTraders = new GControl7(Singleton<ClientApplication<ISession>>.Instance.Session, Singleton<GameWorld>.Instance.MainPlayer.Profile, Singleton<GameWorld>.Instance.MainPlayer.Profile.Id);
-
-			var gClass3599 = new TraderScreensGroup.GClass3599(tradeableArrayTherapist.First(), 
-				tradeableArrayTherapist, 
-				Singleton<GameWorld>.Instance.MainPlayer.Profile, 
-				inventoryControllerTraders, 
-				Singleton<GameWorld>.Instance.MainPlayer.HealthController, 
-				Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass, 
+			var gClass3599 = new TraderScreensGroup.GClass3599(currentTrader.First(),
+				currentTrader,
+				Singleton<GameWorld>.Instance.MainPlayer.Profile,
+				Globals.InventoryController,
+				Singleton<GameWorld>.Instance.MainPlayer.HealthController,
+				Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass,
 				Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,
 				Singleton<ClientApplication<ISession>>.Instance.Session);
 			gClass3599.ShowScreen(EScreenState.Queued);

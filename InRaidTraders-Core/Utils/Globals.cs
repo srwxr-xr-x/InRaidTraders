@@ -34,5 +34,6 @@ public class Globals
     public const string GROUND_ZERO = "Sandbox";
 
     public static StashItemClass PlayerStash;
+    public static GControl7 InventoryController;
     public static List<List<Config>> ConfigList = [];
 }
