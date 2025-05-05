@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using EFT;
+using InRaidTraders.Utils;
 
 namespace InRaidTraders;
 
@@ -17,6 +19,7 @@ public class Globals
     public const string BTR_DRIVER_ID = Profile.TraderInfo.BTR_TRADER_ID;
 
     public const string INTERACTIVE_UUID = "SPT-IRT";
+    public const string CONFIG_PATH = "BepInEx/plugins/InRaidTraders-Core/Assets/Configs";
 
     public const string FACTORY_DAY = "factory4_day";
     public const string FACTORY_NIGHT = "factory4_night";
@@ -30,6 +33,6 @@ public class Globals
     public const string STREETS = "TarkovStreets";
     public const string GROUND_ZERO = "Sandbox";
 
-    public static StashItemClass playerStash;
-    public static bool disableTrading;
+    public static StashItemClass PlayerStash;
+    public static List<List<Config>> ConfigList = [];
 }

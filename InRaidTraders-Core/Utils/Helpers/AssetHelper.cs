@@ -1,8 +1,9 @@
 using System.IO;
 using System.Reflection;
+using InRaidTraders.Utils.Helpers;
 using UnityEngine;
 
-namespace InRaidTraders.Helpers;
+namespace InRaidTraders.Utils.Helpers;
 
 public class AssetHelper
 {

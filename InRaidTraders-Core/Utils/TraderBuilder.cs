@@ -1,7 +1,7 @@
 using InRaidTraders.Interactables;
 using UnityEngine;
 
-namespace InRaidTraders.Builders;
+namespace InRaidTraders.Utils;
 
 public class TraderBuilder
 {

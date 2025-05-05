@@ -1,7 +1,6 @@
 using System.Reflection;
 using Comfort.Common;
 using EFT;
-using EFT.InputSystem;
 using EFT.UI;
 using HarmonyLib;
 using SPT.Reflection.Patching;
@@ -21,21 +20,12 @@ public class ShowPatch : ModulePatch
     {
         ____tasksTab.gameObject.SetActive(false);
         ____servicesTab.gameObject.RectTransform().anchoredPosition = new Vector2(130, 2);
-
+        if (Singleton<GameWorld>.Instantiated)
+        {
+            ____servicesTab.gameObject.SetActive(false);
+        }
+        
         return true;
     }
 }
-public class Method11Patch : ModulePatch
-{
-    protected override MethodBase GetTargetMethod()
-    {
-        return AccessTools.Method(typeof(TraderScreensGroup), nameof(TraderScreensGroup.method_11));
-    }
 
-    [PatchPrefix]
-    public static bool Prefix(TraderScreensGroup __instance)
-    {
-        MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Close();
-        return false;
-    }
-}

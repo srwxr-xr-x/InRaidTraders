@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Comfort.Common;
@@ -11,8 +10,6 @@ using EFT.UI;
 using EFT.UI.Screens;
 using InRaidTraders.Utils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace InRaidTraders.Dialog;
@@ -87,18 +84,25 @@ public class Dialog : GClass2379
 			dialogOptionList.Add(tradingDialogOption);
 
 			// Services Dialog Option
-			if (_traderInfo.Id == Globals.RAGMAN_ID)
+			foreach (List<Config> configList in Globals.ConfigList)
 			{
-				GClass2357 servicesDialogOption = new GClass2357(
-					new DialogOptionDataStruct(ETraderDialogType.Services,
-						GClass3353.EDialogState.AvailableServices,
-						"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
-						"/AvailableServices/Description".Localized()),
-					"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
-					GStruct268.EDialogLiteIconType.Suitcase);
-				servicesDialogOption.OnChangeDialog += OpenServicesUI;
-				dialogOptionList.Add(servicesDialogOption);
+				foreach (Config configOption in configList)
+				{
+					if (_traderInfo.Id == Globals.RAGMAN_ID || (configOption.traderID == _traderInfo.Id && configOption.hasServices))
+					{
+						GClass2357 servicesDialogOption = new GClass2357(
+							new DialogOptionDataStruct(ETraderDialogType.Services,
+								GClass3353.EDialogState.AvailableServices,
+								"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
+								"/AvailableServices/Description".Localized()),
+							"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
+							GStruct268.EDialogLiteIconType.Suitcase);
+						servicesDialogOption.OnChangeDialog += OpenServicesUI;
+						dialogOptionList.Add(servicesDialogOption);
+					}
+				}
 			}
+
 		}
 
 		// Quit Dialog Option
@@ -107,7 +111,7 @@ public class Dialog : GClass2379
 				GClass3353.EDialogState.CommonFarewell, 
 				(Utils.Utils.TraderIdToName(_traderInfo.Id).ToLower() + "_generic_farewell_01")), 
 			"Trading/Dialog/"+ Utils.Utils.TraderIdToName(_traderInfo.Id) +"/Quit", 
-			GStruct268.EDialogLiteIconType.QuitIcon);
+			GStruct268.EDialogLiteIconType.QuitIcon, null, null, ECommand.Escape);
 		dialogOptionList.Add(quitDialogOption);
 		
 		method_0(dialogOptionList);
@@ -134,7 +138,6 @@ public class Dialog : GClass2379
 				if (trader.Id == _traderInfo.Id)
 				{
 					tradeableArrayTherapist = [trader];
-
 				}
 			}
 			
@@ -146,10 +149,7 @@ public class Dialog : GClass2379
 				Singleton<GameWorld>.Instance.MainPlayer.AbstractQuestControllerClass, 
 				Singleton<GameWorld>.Instance.MainPlayer.AbstractAchievementControllerClass,
 				Singleton<ClientApplication<ISession>>.Instance.Session);
-
-			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.method_2(gClass3599);
-			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Awake();
-			MonoBehaviourSingleton<MenuUI>.Instance.TraderScreensGroup.Show(gClass3599);
+			gClass3599.ShowScreen(EScreenState.Queued);
 		}
 	}
 

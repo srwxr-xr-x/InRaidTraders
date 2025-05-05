@@ -1,4 +1,6 @@
-using InRaidTraders.Helpers;
+using System;
+using System.Collections.Generic;
+using InRaidTraders.Utils.Helpers;
 using UnityEngine;
 
 namespace InRaidTraders.Utils;
@@ -44,6 +46,17 @@ public static class Utils
             return "Ref";
         }
 
+        foreach (List<Config> configOption in Globals.ConfigList)
+        {
+            foreach (Config configItem in configOption)
+            {
+                if (traderId == configItem.traderID)
+                {
+                    return configItem.traderName;
+                }
+            }
+        }
+
         return "BAD_TRADER_ID";
     }
     public static AssetBundle MapIDToAssetBundle(string traderID)
@@ -81,5 +94,12 @@ public static class Utils
             return Assets.Jaeger;
         }
         return null;
+    }
+
+    public static Vector3 StringToVector3(string vector)
+    {
+        String[] values = vector.Split(char.Parse(","));
+        Vector3 result = new Vector3(float.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2]));
+        return result;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InRaidTraders.Helpers;
+namespace InRaidTraders.Utils.Helpers;
 
 public static class Assets
 {

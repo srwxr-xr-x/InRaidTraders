@@ -34,6 +34,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net471" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -137,9 +138,6 @@
       <HintPath>..\..\..\EscapeFromTarkov_Data\Managed\bsg.componentace.compression.libs.zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
-  	<ItemGroup>
-	  <ProjectReference Include="..\InRaidTraders-Prepatcher\InRaidTraders-Prepatcher.csproj" />
-	</ItemGroup>
     <ItemGroup>
         <Compile Include="AssemblyInfoClass.cs" />
         <Compile Include="Dialog\Dialog.cs" />
@@ -153,6 +151,7 @@
         <Compile Include="Patches\TraderScreensGroupPatches.cs" />
         <Compile Include="Patches\TraderDialogScreenPatch.cs" />
         <Compile Include="Plugin.cs" />
+        <Compile Include="Utils\ConfigHandler.cs" />
         <Compile Include="Utils\ETraderNewsDialogState.cs" />
         <Compile Include="Utils\Globals.cs" />
         <Compile Include="Utils\Helpers\AssetHelper.cs" />

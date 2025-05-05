@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Comfort.Common;
 using EFT;
 using EFT.Interactive;
 using EFT.UI;
-using InRaidTraders.Builders;
+using InRaidTraders.Utils;
 using SPT.Reflection.Patching;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -169,6 +170,23 @@ public class GameWorldStartPatch : ModulePatch
                     new Vector3(0, 0, 0),new Vector3(1f, 1.75f, 1f), true);
             }
         }
+
+        foreach (List<Config> configOptions in Globals.ConfigList)
+        {
+            foreach (Config configItem in configOptions)
+            {
+                if (!configItem.availableEverywhere)
+                {
+                    if (player.Location.Equals(configItem.map))
+                    {
+                        TraderBuilder.Build(configItem.traderID, Utils.Utils.StringToVector3(configItem.location),
+                            Utils.Utils.StringToVector3(configItem.rotation),
+                            Utils.Utils.StringToVector3(configItem.scale), configItem.DEBUG);
+                    }
+                }
+            }
+        }
+        
         // Find and enable all the Interactive objects after Player.create<T>, since it overrides it.
         foreach (GameObject interact in Resources.FindObjectsOfTypeAll<GameObject>()
                      .Where(obj => obj.name.Contains(Globals.INTERACTIVE_UUID)))
@@ -180,7 +198,7 @@ public class GameWorldStartPatch : ModulePatch
     [PatchPostfix]
     public static void PatchPostfix()
     {
-        Singleton<GameWorld>.Instance.MainPlayer.Inventory.Stash = Globals.playerStash;
+        Singleton<GameWorld>.Instance.MainPlayer.Inventory.Stash = Globals.PlayerStash;
         Singleton<GameWorld>.Instance.MainPlayer.Inventory.QuestStashItems = Singleton<ItemFactoryClass>.Instance.CreateFakeStash();
         AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive);
     }

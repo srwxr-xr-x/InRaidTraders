@@ -1,14 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using BepInEx;
-using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using BepInEx.Logging;
-using Comfort.Common;
 using EFT;
 using EFT.UI;
-using HarmonyLib;
-using InRaidTraders.Helpers;
+using EFT.UI.Screens;
 using InRaidTraders.Patches;
+using InRaidTraders.Utils;
 using UnityEngine;
 using static InRaidTraders.AssemblyInfoClass;
 
@@ -19,7 +17,7 @@ public class Plugin : BaseUnityPlugin
 {
     public static ManualLogSource LogSource;
 
-    private const string SPAWN_CHANCE_SECTION_NAME = "Trader Spawn Chances";
+    private const string SpawnChanceSectionName = "Trader Spawn Chances";
     internal static ConfigEntry<float> PraporSpawnChance;
     internal static ConfigEntry<float> TherapistSpawnChance;
     internal static ConfigEntry<float> FenceSpawnChance;
@@ -36,57 +34,74 @@ public class Plugin : BaseUnityPlugin
         
         InitConfiguration();
         EnablePatches();
+
     }
-    
+
+    private void Update()
+    {
+        foreach (List<Config> configOptions in Globals.ConfigList)
+        {
+            foreach (Config configItem in configOptions)
+            {
+                if (Input.GetKeyDown(configItem.keybind) && configItem.availableEverywhere && GamePlayerOwner.MyPlayer.Profile.TradersInfo[configItem.traderID].Unlocked)
+                {
+                    new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, configItem.traderID,
+                        GamePlayerOwner.MyPlayer.AbstractQuestControllerClass,
+                        GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
+                }
+            }
+        }
+    }
+
     private void InitConfiguration()
     {
         PraporSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Prapor Spawn Chance", 
             85f,
             "The chance that Prapor will be in the raid");
         TherapistSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Therapist Spawn Chance", 
             90f,
             "The chance that Therapist will be in the raid");
         FenceSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Fence Spawn Chance", 
             25f,
             "The chance that Fence will be in the raid");
         SkierSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Skier Spawn Chance", 
             85f,
             "The chance that Skier will be in the raid");
         PeacekeeperSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Peacekeeper Spawn Chance", 
             85f,
             "The chance that Peacekeeper will be in the raid");
         MechanicSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Mechanic Spawn Chance", 
             85f,
             "The chance that Mechanic will be in the raid at night");
         RagmanSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Ragman Spawn Chance", 
             65f,
             "The chance that Ragman will be in the raid");
         JaegerSpawnChance = Config.Bind(
-            SPAWN_CHANCE_SECTION_NAME, 
+            SpawnChanceSectionName, 
             "Jaeger Spawn Chance", 
             66f,
             "The chance that Jaeger will be in the raid");
+        ConfigHandler.LoadConfig();
     }
     private void EnablePatches()
     {
         new TraderDialogScreenPatch().Enable();
         new AvailableActionsPatch().Enable();
         new ShowPatch().Enable(); 
-        new Method11Patch().Enable();
         new GameWorldStartPatch().Enable();
         new Method5Patch().Enable();
         new TraderCardPatch().Enable();

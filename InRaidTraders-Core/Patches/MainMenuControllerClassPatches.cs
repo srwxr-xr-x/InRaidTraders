@@ -14,6 +14,6 @@ public class Method5Patch : ModulePatch
     [PatchPostfix]
     public static void Postfix(MainMenuControllerClass __instance)
     {
-        Globals.playerStash = __instance.InventoryController.Inventory.Stash;
+        Globals.PlayerStash = __instance.InventoryController.Inventory.Stash;
     }
 }
