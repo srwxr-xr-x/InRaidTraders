@@ -32,10 +32,4 @@ Currently only 1 map is supported, next update should fix this.
 
 If you are going to help develop the mod (which I highly recommend!) I only ask that you pull request your feature!
 
-### License 
-
-Our license is available in the `LICENSE` file in the root of the repository. This repository is licensed under the GNU General Public License v3.0.
-Any modifications you make to your fork is your property, and is wholy allowed to be reuploaded. In observation of general ettiquete, even though you can
-reupload this mod without any attribution, it is better to incorporate your changes into the main mod with a pull request, feel free to!
-
 $${\color{lightblue}Trans \space \color{pink}Rights \space \color{white}Are \space \color{pink}Human \space \color{lightblue}Rights}$$
