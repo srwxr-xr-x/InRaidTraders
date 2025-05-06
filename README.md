@@ -43,4 +43,6 @@ Currently only 1 map is supported, next update should fix this.
 
 If you are going to help develop the mod (which I highly recommend!) I only ask that you pull request your feature!
 
+***Are you a EFT developer? If so, I will gladly accept your job offer!*** 😉
+
 $${\color{lightblue}Trans \space \color{pink}Rights \space \color{white}Are \space \color{pink}Human \space \color{lightblue}Rights}$$
