@@ -13,5 +13,5 @@ public static class AssemblyInfoClass
     
     public const string InRaidTradersName = "InRaidTraders";
     public const string InRaidTradersGUID = "com.lillian.InRaidTraders";
-    public const string InRaidTradersVersion = "1.0.0";
+    public const string InRaidTradersVersion = "1.1.0";
 }
