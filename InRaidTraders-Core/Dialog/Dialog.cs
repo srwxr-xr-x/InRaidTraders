@@ -41,7 +41,7 @@ public class Dialog : GClass2379
 		compositeDisposableClass.AddDisposable(UpdateServices);
 	}
 
-	public void DialogOptions()
+	private void DialogOptions()
 	{
 		// Main dialog list
 		List<GClass2341> dialogOptionList = new List<GClass2341>();
@@ -84,25 +84,21 @@ public class Dialog : GClass2379
 			dialogOptionList.Add(tradingDialogOption);
 
 			// Services Dialog Option
-			foreach (List<Config> configList in Globals.ConfigList)
+			foreach (Config configOption in Globals.ConfigList)
 			{
-				foreach (Config configOption in configList)
+				if (_traderInfo.Id == Globals.RAGMAN_ID || (configOption.traderID == _traderInfo.Id && configOption.hasServices)) 
 				{
-					if (_traderInfo.Id == Globals.RAGMAN_ID || (configOption.traderID == _traderInfo.Id && configOption.hasServices))
-					{
-						GClass2357 servicesDialogOption = new GClass2357(
-							new DialogOptionDataStruct(ETraderDialogType.Services,
-								GClass3353.EDialogState.AvailableServices,
-								"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
-								"/AvailableServices/Description".Localized()),
+					GClass2357 servicesDialogOption = new GClass2357(
+						new DialogOptionDataStruct(ETraderDialogType.Services,
+							GClass3353.EDialogState.AvailableServices,
+							"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) +
+							"/AvailableServices/Description".Localized()),
 							"Trading/Dialog/" + Utils.Utils.TraderIdToName(_traderInfo.Id) + "/AvailableServices",
 							GStruct268.EDialogLiteIconType.Suitcase);
-						servicesDialogOption.OnChangeDialog += OpenServicesUI;
-						dialogOptionList.Add(servicesDialogOption);
-					}
+					servicesDialogOption.OnChangeDialog += OpenServicesUI;
+					dialogOptionList.Add(servicesDialogOption);
 				}
 			}
-
 		}
 
 		// Quit Dialog Option

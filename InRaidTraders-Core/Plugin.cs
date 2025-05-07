@@ -26,6 +26,8 @@ public class Plugin : BaseUnityPlugin
     internal static ConfigEntry<float> MechanicSpawnChance;
     internal static ConfigEntry<float> RagmanSpawnChance;
     internal static ConfigEntry<float> JaegerSpawnChance;
+    private const string TraderSettingsSectionName = "Trader Settings";
+    internal static ConfigEntry<bool> TradersOutOfRaid;
 
     private void Awake()
     {
@@ -39,17 +41,13 @@ public class Plugin : BaseUnityPlugin
 
     private void Update()
     {
-        foreach (List<Config> configOptions in Globals.ConfigList)
-        {
-            foreach (Config configItem in configOptions)
+        foreach (Config configItem in Globals.ConfigList)
+        { 
+            if (Input.GetKeyDown(configItem.keybind) && configItem.availableEverywhere && GamePlayerOwner.MyPlayer.Profile.TradersInfo[configItem.traderID].Unlocked) 
             {
-                if (Input.GetKeyDown(configItem.keybind) && configItem.availableEverywhere && GamePlayerOwner.MyPlayer.Profile.TradersInfo[configItem.traderID].Unlocked)
-                {
-                    new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, configItem.traderID,
-                        GamePlayerOwner.MyPlayer.AbstractQuestControllerClass,
-                        GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued);
-                }
-            }
+                new TraderDialogScreen.BTRDialogClass(GamePlayerOwner.MyPlayer.Profile, configItem.traderID,
+                    GamePlayerOwner.MyPlayer.AbstractQuestControllerClass,
+                    GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued); }
         }
     }
 
@@ -95,7 +93,11 @@ public class Plugin : BaseUnityPlugin
             "Jaeger Spawn Chance", 
             66f,
             "The chance that Jaeger will be in the raid");
-        
+        TradersOutOfRaid = Config.Bind(
+            TraderSettingsSectionName,
+            "Enable Traders out of raid?",
+            false,
+            "Enable the default traders main menu along with traders in raid");
         ConfigHandler.LoadConfig();
     }
     private void EnablePatches()

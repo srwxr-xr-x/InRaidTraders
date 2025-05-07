@@ -35,5 +35,5 @@ public class Globals
 
     public static StashItemClass PlayerStash;
     public static GControl7 InventoryController;
-    public static List<List<Config>> ConfigList = [];
+    public static List<Config> ConfigList = [];
 }

@@ -132,25 +132,22 @@ public class TraderDialogScreenPatch : ModulePatch
             return false;
         }
 
-        foreach (List<Config> configList in Globals.ConfigList)
+        foreach (Config configOption in Globals.ConfigList)
         {
-            foreach (Config configOption in configList)
+            if (___string_0 == configOption.traderID)
             {
-                if (___string_0 == configOption.traderID)
-                {            
-                    ___gclass2336_0 = new GeneralDialogHandler(___profile_0, configOption.traderID, ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
-            
-                    ___gclass2336_0.OnActionFinished += __instance.method_5;
-                    ___UI.AddDisposable(__instance.method_7);
-                    ___UI.AddDisposable(___gclass2336_0);
-                    ____dialogWindow.Show(___gclass2336_0);
+                ___gclass2336_0 = new GeneralDialogHandler(___profile_0, configOption.traderID,
+                    ___abstractQuestControllerClass, ___inventoryController_0, ___ginterface238_0);
 
-                    return false;
-                }
+                ___gclass2336_0.OnActionFinished += __instance.method_5;
+                ___UI.AddDisposable(__instance.method_7);
+                ___UI.AddDisposable(___gclass2336_0);
+                ____dialogWindow.Show(___gclass2336_0);
+
+                return false;
             }
         }
 
-        
         return true;
     }
 }

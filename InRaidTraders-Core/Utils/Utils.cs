@@ -46,17 +46,15 @@ public static class Utils
             return "Ref";
         }
 
-        foreach (List<Config> configOption in Globals.ConfigList)
+
+        foreach (Config configItem in Globals.ConfigList)
         {
-            foreach (Config configItem in configOption)
+            if (traderId == configItem.traderID)
             {
-                if (traderId == configItem.traderID)
-                {
-                    return configItem.traderName;
-                }
+                return configItem.traderName;
             }
         }
-
+        
         return "BAD_TRADER_ID";
     }
     public static AssetBundle MapIDToAssetBundle(string traderID)

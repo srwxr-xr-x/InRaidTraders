@@ -13,7 +13,7 @@ public class TraderCardPatch : ModulePatch
     [PatchPostfix]
     protected static void Postfix(TraderCard __instance, ref Profile.TraderInfo trader)
     {
-        if (Utils.Utils.TraderIdToName(trader.Id) != "BAD_TRADER_ID")
+        if (Utils.Utils.TraderIdToName(trader.Id) != "BAD_TRADER_ID" && !Plugin.TradersOutOfRaid.Value)
         {
             __instance.HideGameObject();
         }

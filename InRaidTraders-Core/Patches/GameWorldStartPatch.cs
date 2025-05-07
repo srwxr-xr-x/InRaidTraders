@@ -171,13 +171,13 @@ public class GameWorldStartPatch : ModulePatch
             }
         }
 
-        foreach (List<Config> configOptions in Globals.ConfigList)
+        foreach (Config configItem in Globals.ConfigList)
         {
-            foreach (Config configItem in configOptions)
+            if (!configItem.availableEverywhere && seedSpawnChance <= configItem.spawnChance)
             {
-                if (!configItem.availableEverywhere && seedSpawnChance <= configItem.spawnChance)
+                foreach (string map in configItem.map)
                 {
-                    if (player.Location.Equals(configItem.map))
+                    if (player.Location.Equals(map))
                     {
                         TraderBuilder.Build(configItem.traderID, Utils.Utils.StringToVector3(configItem.location),
                             Utils.Utils.StringToVector3(configItem.rotation),
