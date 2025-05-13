@@ -21,10 +21,6 @@ public class ShowPatch : ModulePatch
     {
         ____tasksTab.gameObject.SetActive(false);
         ____servicesTab.gameObject.RectTransform().anchoredPosition = new Vector2(130, 2);
-        if (Singleton<GameWorld>.Instantiated)
-        {
-            ____servicesTab.gameObject.SetActive(false);
-        }
         return true;
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using Comfort.Common;
 using EFT;
 using EFT.UI;
 using EFT.UI.Screens;
@@ -49,6 +51,7 @@ public class Plugin : BaseUnityPlugin
                     GamePlayerOwner.MyPlayer.AbstractQuestControllerClass,
                     GamePlayerOwner.MyPlayer.InventoryController, null).ShowScreen(EScreenState.Queued); }
         }
+
     }
 
     private void InitConfiguration()

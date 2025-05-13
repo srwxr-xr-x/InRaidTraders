@@ -1,14 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Comfort.Common;
 using EFT;
 using EFT.Interactive;
+using EFT.InventoryLogic;
 using EFT.UI;
 using InRaidTraders.Utils;
 using SPT.Reflection.Patching;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace InRaidTraders.Patches;
 
@@ -199,6 +202,7 @@ public class GameWorldStartPatch : ModulePatch
     public static void PatchPostfix()
     {
         Singleton<GameWorld>.Instance.MainPlayer.Inventory.Stash = Globals.PlayerStash;
+        
         Singleton<GameWorld>.Instance.MainPlayer.Inventory.QuestStashItems = Singleton<ItemFactoryClass>.Instance.CreateFakeStash();
         AssetsManagerSingletonClass.Manager.LoadScene(GClass2078.MenuUIScene, LoadSceneMode.Additive);
     }
